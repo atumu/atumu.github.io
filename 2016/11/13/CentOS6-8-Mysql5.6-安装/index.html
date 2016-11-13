@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux, mysql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="atumu' blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="卸载旧版本
+查找旧版本
+ 1pm -qa | grep -i mysql # -i 忽略大小写
+
+删除
+ 123rpm -e xxx #删除模式 rpm -e --nodeps xxx # 强力删除模式rm /etc/my.cnf #删除/etc/my.cnf
+
+
+安装编译代码需要的包1yum -y install make gcc-c++ cmake bison-devel ncurses-de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS6.8 Mysql5.6 编译安装">
+<meta property="og:url" content="http://gongchangmumu.com/2016/11/13/CentOS6-8-Mysql5.6-安装/index.html">
+<meta property="og:site_name" content="atumu' blog">
+<meta property="og:description" content="卸载旧版本
+查找旧版本
+ 1pm -qa | grep -i mysql # -i 忽略大小写
+
+删除
+ 123rpm -e xxx #删除模式 rpm -e --nodeps xxx # 强力删除模式rm /etc/my.cnf #删除/etc/my.cnf
+
+
+安装编译代码需要的包1yum -y install make gcc-c++ cmake bison-devel ncurses-de">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:updated_time" content="2016-11-13T11:08:07.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS6.8 Mysql5.6 编译安装">
+<meta name="twitter:description" content="卸载旧版本
+查找旧版本
+ 1pm -qa | grep -i mysql # -i 忽略大小写
+
+删除
+ 123rpm -e xxx #删除模式 rpm -e --nodeps xxx # 强力删除模式rm /etc/my.cnf #删除/etc/my.cnf
+
+
+安装编译代码需要的包1yum -y install make gcc-c++ cmake bison-devel ncurses-de">
+<meta name="twitter:image" content="data:image/png;base64,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">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 8299034,
+      author: 'atumu'
+    }
+  };
+</script>
+
+  <title> CentOS6.8 Mysql5.6 编译安装 | atumu' blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e5a426d8294953e7ac42555621cdbe3d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">atumu' blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">write the code,change the world!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'YnddLi7SokF3K-E8Jow5','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CentOS6.8 Mysql5.6 编译安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-13T10:38:40+08:00" content="2016-11-13">
+              2016-11-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/13/CentOS6-8-Mysql5.6-安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/13/CentOS6-8-Mysql5.6-安装/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h2><ol>
+<li><p>查找旧版本</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm -qa | grep -i mysql <span class="comment"># -i 忽略大小写</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm <span class="_">-e</span> xxx <span class="comment">#删除模式 </span></span><br><span class="line">rpm <span class="_">-e</span> --nodeps xxx <span class="comment"># 强力删除模式</span></span><br><span class="line">rm /etc/my.cnf <span class="comment">#删除/etc/my.cnf</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="安装编译代码需要的包"><a href="#安装编译代码需要的包" class="headerlink" title="安装编译代码需要的包"></a>安装编译代码需要的包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install make gcc-c++ cmake bison-devel ncurses-devel</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="创建MySQL用户（但是不能使用MySQL账号登陆系统）"><a href="#创建MySQL用户（但是不能使用MySQL账号登陆系统）" class="headerlink" title="创建MySQL用户（但是不能使用MySQL账号登陆系统）"></a>创建MySQL用户（但是不能使用MySQL账号登陆系统）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql </span><br><span class="line">useradd <span class="_">-s</span> /sbin/nologin -g mysql mysql</span><br></pre></td></tr></table></figure>
+<h2 id="下载MySQL源码"><a href="#下载MySQL源码" class="headerlink" title="下载MySQL源码"></a>下载MySQL源码</h2><ol>
+<li><p>下载地址（找到MySQL-5.6.小版本号.tar.gz下载）：</p>
+<ol>
+<li>ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/</li>
+<li><a href="http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-5.6/" target="_blank" rel="external">http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-5.6/</a></li>
+</ol>
+</li>
+<li><p>编译源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">tar zxvf MySQL-5.6.33.tar.gz</span><br><span class="line"><span class="built_in">cd</span> MySQL-5.6.33/</span><br><span class="line">cmake \</span><br><span class="line">	-DCMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span>/mysql \</span><br><span class="line">	-DMYSQL_DATADIR=/usr/<span class="built_in">local</span>/mysql/data \</span><br><span class="line">	-DSYSCONFDIR=/etc \</span><br><span class="line">	-DWITH_MYISAM_STORAGE_ENGINE=1 \</span><br><span class="line">	-DWITH_INNOBASE_STORAGE_ENGINE=1 \</span><br><span class="line">	-DWITH_MEMORY_STORAGE_ENGINE=1 \</span><br><span class="line">	-DWITH_READLINE=1 \</span><br><span class="line">	-DMYSQL_UNIX_ADDR=/tmp/mysqld.sock \</span><br><span class="line">	-DMYSQL_TCP_PORT=3306 \</span><br><span class="line">	-DENABLED_LOCAL_INFILE=1 \</span><br><span class="line">	-DWITH_PARTITION_STORAGE_ENGINE=1 \</span><br><span class="line">	-DEXTRA_CHARSETS=all \</span><br><span class="line">	-DDEFAULT_CHARSET=utf8 \</span><br><span class="line">	-DDEFAULT_COLLATION=utf8_general_ci</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>cmake注释：</p>
+<pre><code>cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \   #安装路径
+    -DMYSQL_DATADIR=/usr/local/mysql/data       \    #数据文件存放位置
+    -DSYSCONFDIR=/etc              \                                  #my.cnf路径
+    -DWITH_MYISAM_STORAGE_ENGINE=1    \       #支持MyIASM引擎
+    -DWITH_INNOBASE_STORAGE_ENGINE=1 \     #支持InnoDB引擎
+    -DWITH_MEMORY_STORAGE_ENGINE=1 \        #支持Memory引擎
+    -DWITH_READLINE=1                    \                         #快捷键功能(我没用过)
+    -DMYSQL_UNIX_ADDR=/tmp/mysqld.sock      \   #连接数据库socket路径
+    -DMYSQL_TCP_PORT=3306                  \               #端口
+    -DENABLED_LOCAL_INFILE=1            \                #允许从本地导入数据
+    -DWITH_PARTITION_STORAGE_ENGINE=1  \   #安装支持数据库分区
+    -DEXTRA_CHARSETS=all                  \                   #安装所有的字符集
+    -DDEFAULT_CHARSET=utf8              \                   #默认字符
+    -DDEFAULT_COLLATION=utf8_general_ci
+</code></pre><h2 id="编译并安装"><a href="#编译并安装" class="headerlink" title="编译并安装"></a>编译并安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><ol>
+<li><p>命令</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mysql  </span><br><span class="line">chown -R mysql .  </span><br><span class="line">chgrp -R mysql .  </span><br><span class="line">scripts/mysql_install_db --user=mysql  </span><br><span class="line">chown -R root .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>说明<br> cd /usr/local/mysql<br> chown -R mysql:mysql . # (为了安全安装完成后请修改权限给root用户)<br> scripts/mysql_install_db –user=mysql (先进行这一步再做如下权限的修改)<br> chown -R root:mysql .  (将权限设置给root用户，并设置给mysql组， 取消其他用户的读写执行权限，仅留给mysql “rx”读执行权限，其他用户无任何权限)<br> chown -R mysql:mysql ./data   (给数据库存放目录设置成mysql用户mysql组，并赋予chmod -R ug+rwx  读写执行权限，其他用户权限一律删除仅给mysql用户权限)    </p>
+</li>
+<li>将mysql的配置文件拷贝到/etc<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/my-default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h2><ol>
+<li><p>将mysql的启动服务添加到系统服务中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/mysql.server /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止mysql服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld stop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启mysql服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add mysqld</span><br></pre></td></tr></table></figure>
+<h2 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a>配置用户</h2><ol>
+<li><p>设置PATH</p>
+<ol>
+<li>修改/etc/profile文件，在文件末尾添加<br>export PATH=/usr/local/mysql/bin:$PATH</li>
+<li>让配置立即生效<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>进入MySQL</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h127.0.0.1 -uroot</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改root密码</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="built_in">set</span> password=password(<span class="string">'123456'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程访问</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span> WITH GRANT OPTION;</span><br><span class="line">FLUSH PRIVILEGES; // 授权立即生效</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h2><ol>
+<li><p>开启3306</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p> 添加一行</p>
+<pre><code>-A INPUT -m state --state NEW -m tcp -p -dport 3306 -j ACCEPT
+</code></pre></li>
+<li>重启防火墙 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="其他错误"><a href="#其他错误" class="headerlink" title="其他错误"></a>其他错误</h2><p><a href="http://blog.rekfan.com/articles/186.html" target="_blank" rel="external">1. MySql提示:The server quit without updating PID file(…)失败</a></p>
+<pre><code>主要内容（备份）：
+1.可能是/usr/local/mysql/data/rekfan.pid文件没有写的权限
+解决方法 ：给予权限，执行 “chown -R mysql:mysql /var/data” “chmod -R 755 /usr/local/mysql/data”  然后重新启动mysqld！
+
+2.可能进程里已经存在mysql进程
+解决方法：用命令“ps -ef|grep mysqld”查看是否有mysqld进程，如果有使用“kill -9  进程号”杀死，然后重新启动mysqld！
+
+3.可能是第二次在机器上安装mysql，有残余数据影响了服务的启动。
+解决方法：去mysql的数据目录/data看看，如果存在mysql-bin.index，就赶快把它删除掉吧，它就是罪魁祸首了。本人就是使用第三条方法解决的 ！http://blog.rekfan.com/?p=186
+
+4.mysql在启动时没有指定配置文件时会使用/etc/my.cnf配置文件，请打开这个文件查看在[mysqld]节下有没有指定数据目录(datadir)。
+解决方法：请在[mysqld]下设置这一行：datadir = /usr/local/mysql/data
+
+5.skip-federated字段问题
+解决方法：检查一下/etc/my.cnf文件中有没有没被注释掉的skip-federated字段，如果有就立即注释掉吧。
+
+6.错误日志目录不存在
+解决方法：使用“chown” “chmod”命令赋予mysql所有者及权限
+
+7.selinux惹的祸，如果是centos系统，默认会开启selinux
+解决方法：关闭它，打开/etc/selinux/config，把SELINUX=enforcing改为SELINUX=disabled后存盘退出重启机器试试。
+</code></pre><p>一直报错：<br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABEkAAAAoCAYAAAACAqShAAAZi0lEQVR4nO2dT2gjR/bHX8wwDLPDMLCTbE4jYWaIks2PARP2FH4ShuCTDg7sRReBL2YPQfjok+jTHI3IIczFoIuO0UEnExDWj5zCYgibbBQGjJRTsjOBMEzMYJbJr6uqW+pu9Z9XrWp1y/5+gsnYatW/V/XqT7/36q2HDx/+QQAAAAAAAAAAAADXnI28CwAAAAAAAAAAAABQBHBIAgAAAAAAAAAAAEDBQ5L6EZ2dnTk/R1TPqVCZ4qtjAevJLl+djuzP+63Kigu4Iiot6tv1OyqKcK7D2EhNhVp9u10KI6w1oOh6CAAAAAAAgGtKiCXJiNpbW7S1dUCD1ZcnlvqRvZnotyjxWGBhA9Kn2VnC4MCu25b8aXSnGZc4BUUvnwe2PHLCaPkcufBkIg6w3D6nDhBwfgB8FGCc5zV+i643AAAAAADA9ebKudvIBbhFzkGPuwkhavawUQUror5NVZrQ+dj+d2WHaqUpTZ7lXagsGVNn1x5rB0U7VgUAAAAAAAAAPfQPSTxuEPJAwrHWWHD7cJ4LtebQek65lYjPrKr9a6lJvQgT9Uqrbz8jLGH8VjDjziGJl7XV7RSnJNx6uC4HSc9lYGbvlUPkG1pmPXxpnYW5UPDloVkJf9kecZ4Ly1OzfFnIY9vOeDRUffBRmUrTUzoZp0wrUR4uwf4XcSiYOH6jXWcWLQDmbR1ftrDyccdR2sNNxx2t3/ek4ynvLFEnv5BxE2bxwJZHsD/XV+M+Znz8csdHYr/KSG8AAAAAAABgmNSWJOW9Pm0P59Yah7QzX+iKBXOvSdRtzD7fak8WrTlYzw3owPmsPbJ/nXapMbMS8R6G1Gm/WbI/fur8zbuB26fyRBR6U8/Em1sPmVePmpP2/LmtQ6L9wMZLbDi2h55nRJ2qZC2xSSg1e3M5NLo0tTcfT8IOrBj1EJsbq+xtX/tnuB04AOPKQwNRPnvnNGq76RxT2WpSKfgcq/00ymdSHp5DKLkJrFqq74lf3A2h5g6ZJw/55GL/sytftaI35dHjd0wnp/JEceHwSZz9TE9PaH7e47Z1g+I9RpjjI0U9kihNjmflq1p7NGmoNOf1G1Pn2P69VKOdwOFssL5seXD7s2GMj98U4yO6X2WgNwAAAAAAAMiA1IckYvPhta4fdzqzhW59394Q2Ivgw47n9fngQC6Oq3vzjRH3ORbSxWFKp84r+/qRRVV3Id6YULmqX0d2Pdy8fO4G9ubroEM+AwIRhyDgkjB42rVLXaU0Ri6SUXsuh/EJif1tqew3w+DVI2wTrJ7b7aQ0g2Dilu/prGkG9DRs1226/UymN+7QrntQZf/XFZvxrTaJ/eBss6zljsKXR2j/SxhHceN33Dm2yx1og8D40oE7PtLUI4mp9HMa0/lE/OJY9Dyb2DUp0+YsTtHQrm+Jat5TkoX6asiD25+NksH4TTE+4voVAAAAAAAA60DqQ5LRMGrpW6HNcshincTeRO7g6ZHWczwqIrFZHIgW7QmPh2NnE2ZvYMXLYj2Wr0doqq2+33y9t9wb5qkv2IWzGfRZzHDr8Yzkr83eimO3hJdvfHJKYdtK0+1nOj2fe01l096Kp41HwpVHtHwHw1HkOIoev/KbNBz53dPqageewm2IOz7S1YOL7OuRqPqWajvOuKlQay9Y3+XkEdWfzZHN+NUdH/H9CgAAAAAAgOKTQeDWR1SOWEWP5Q5e9zkzxG+Swli+HkHEhkN5vXjM4aXlQZZw6yGCb7puCdw4E9mWL4jp9stCHvKwbnKuNshLxSPhykO1n9gc+2NHOK4+KRkMvS4pEVYKLLjyzaYe0ZTIa3AlLSRclxsZbNdzyCrRk8fqMT9+89FXAAAAAAAA5MsN80mqN5rlkE9caw+958zwSHvnsnw9At+inZqImdKgjL1XAui0s7qlpOP8JmMcVC06qg8ou4tL8mo/k+mJWBoWzbfyIh6J5fy7Sr2zpnSL0r/9hSMPp/1OG2bdooQLimVJt4oBKdeTbqrTHq58M6oHF+mq1qTmfp1OJjUq0YiOF8SlIY9VlVu7fFzy0lcAAAAAAADkSwaWJMrlY266PkceVEwn9EzrOWauys9ExRlw3GtmcQwc95vw72RXj8C3Qt8wV3ZqkebrZixq0rfz4EDF1ChvpokGsVz5FttFv/3iMZmeE5TSWDySiFxC5eG0X3kZZ5TQ3GYuN+ldbTzlSxwfWdWDixuwdo+eSDOSYWIsjVh5JPZnzzcysJyLLh8X0+MNAAAAAACA9SCDQxLXdD1wy0r9SN764TVh5z7nomJoBG+hcBPzB1+UGwT3VpFemSZhMUlkAMfoIITserh5+a/uodaRN9ikE/egue+7BehJM2bLkVA+Lrx6CGuIwK0VCcE6Y+WRonz7s8zVTUWBp7TbL758KeSRxEI8khGlD9HAl4fsf+I2naBrhbidJOpKaAbK5caS/SSdq42nfInjI7t6cFFxQ0pUKk2p+zQoOA15sPqzByPj3PT4zWB8sPIFAAAAAAAgXzJwtyF100eDqN/rkfA0UKg37D7Tbe5zs8cPqVvryatr1eMjas+ujxQ3SOxRr/mEWie79vfF2/2EHaqd/2G3Rj3hw2+5ee/O82aXT+T1jFr9nsfNQqXlfWxw0KBN+xlLXBPrlr/Rpb1ek0JJKh8XVj1EHUhem2yR95no/OLloVm+dtmuo6ee7a68NtWLbvsllU9bHglIi4vJUMpcvnGfnmpZQ/nRkUdY/yN1zeru4mEjvwjC5aYaudFW7hyeP5TmbkbCTWPuNsMbH5nVg4u0QGuSVQ6zmtGQB7M/e59ffpybH7+mxwc3XwAAAAAAAPLkrYcPH/4x+028sbVXw+u8YFXBBkvSzSG7OBrguqL612StxwiIQsWWKXcziItSaVG/16QJ9BIAAAAAAACFJsTdpirfHJ4FTbfXhHFnV8aDIMt/Q0a/BdtusATiANHuRz0D7gagmFRae7b2G9ExIpUCAAAAAABwbfG72wwOKMlDZT1guNoAoMOVGRtgAWlBp/yGRu1dWAgBAAAAAABwjfG72wAAAAAAAAAAAABcUzK53QYAAAAAAAAAAABg3cAhCQAAAAAAAAAAAADhkAQAAAAAAAAAAABAgkMSAAAAAIAcePzhPbJqd+mTO4YT/sttO9179NkmlnkAAACALvPZ07ni1PtztI53AEsq1OrbdShUBep0JNu1T77biGftnvLKZbbc3PzPovOrtKgfLF9BqB+dLdTT/+OWW9UTVz5fB4o4zr2YKB/6sxZSh61q7ipi/wvqeeen36JgD6q0+uG61PdsWHoG54jA/BXelDHtvDD/pZxHl8FXhoT879yiT/6y+OcXP72ir14x87PT+Kx2Tx6ALP7cpsfOY+/+6Yad8AV9fv5m+ToUoZ3jWLp8a6ZnV1XflerTNATqcWX66Zr1xyiujDwiKOT4KOK6xEuK8kW18wraf0PlYy+WrDJ1G1u0teX8tEdUtcIzlxvWkEVX1uSVr1lKVNvxLEG3q6lT4stNKFyLyt3G7Ln2qEpW0RRWDIMDTx232jSy/zb11Gdra5c647xLCYpI0fUGylcsrkJ9R+2Aviw1qReo07izG65PdzsUVKW+9BqnVOuZWITZ85JV9enxA937t8XV7M53G93pkuVZhhG1ZTkO4q8Q/9MGffz+ktYdr97Qr3RJX57+Rm3Pz5cviH784YK+lQ9t0P/cJ/p6cslL02nHyDYsTDtHsGT5Kq09qtoyPF6XRcQa1TdLfbpQjyveT1eJEbkVvb5FLx+IZ9yhQ1tu1b3s1ms3xEJlv1mSCxWfvhSd51mLWo8yyjlTxtTZ3aJO3sUIYTQaUbW2QxW7sce2WDfLU/tvRFXtsxK+3OREMu1Sw/Pg4KBN22cW7bUqNFiXhQEAPoo7zhVFLx9YjnWR74AO2tt0ZtVop9Kh8bLq3l6Y7DaI+j2LjuoD/YMNl8omle3/Tc6TCrQu7ZzM47dvyv/ff3CXrAfeT4K/O1y8pi++eU0/RyUoXGrev0Ff//Ml/cf391v08e0Noo/u0cfOn3784Tf6/u179Ol9RrrXCnctdRh/wHVluCr1vSr1AMAkRZ8vzZZv3DmmUdOi/Xon/VokhvjXGfZiqDPLdG52a4kNvXgzZcI802Mu43WpmJuZ6eQbMA0OfdM1N2PzuXBEnZj66tGnVn1J857hkEalMskzjMoO1eiUhhNfgyhTpJDysE92fXKr0E7NnkhOTwJvBwc0HNnNWV7LUzAWLPm67W3IzWzBLSgyMWa+ieMj2nQtvL+YyleTxHEUbl4aXgf+OGfrq1hUm0XXPfh5NuVj9WdHbtGuEdx2Ntl++vn2W3V/P40aR8F+FaXOEuejKzbPBHk2oSmVyJi6H5/Q6ZSouq1fwJmbT69pl4ik5WO4LuK0s3buRvW9Fndu0f/efk1fhFiAvPjppe9vsx/OQcbFJf0r4KojD2NeXPjSEgckf32uke4yJOqh2YMBeUQ8l6HZfrhVhTN++31PP/H0x1mn0VuvsdcHGeqDWCuSXPQpJz3NenBZg35qZt4PSSu0/5me9zUpujy444O7DkvULzr1yGBdktwgGus1jfmc284StZdNsxbhsGGvnmgyFWOhl6CAB3Qwc9UgYZtLjZk5b8DEVFRwe+gx90127yjv9Wl7OH/+kHacZzXynT3boCTLKVHfWX6NLk1tZfAkOMpER7c1xdzU+JjKllrYpUcItEpCnpWdGpUm57YEvIypcyxOL8RbP+/f6yQ8c+aHHVy5PaJyRIGfiQTKm2ttVh4FS75y0PaoOWmz3MySEErHKnv7p/0z3A7ZXOvnGz0+xnSidisLixR/fzGdrwbGxxFnnOvojSTGdD6JOVAUh50l7xtx8+Vj6yt740leN7T2hJq9NP3ZZPvpU2paVD72uItUrcVxxO1XrPnoqs0zAR6V7fSmNHmW/CgPR++kmD9mbj6iPcjvyuN/E8RvZx5m9b0uj8sb9H8LhxMb9M5tol9/Z8QNieLijT/NO7forxcv6cuLDXrXl88bev57+mzYsPVQiDy2Don2Awv2FOtJPq41wtNQnVaaHM/6X9Xao0lD9Zn5fMtdr2msDzLVBzH1zUufppJvvNxYrEE/NTnv8/pfjvN+0eXBHR8a67Bk/aJTD8PrEg1Y6zVu+VLoP7mXXdgDmWFDKvlDtVjxvtFZyhdNuHwE7F4GT0Ue6nAgDNFZvF8ZdzrZDshRe56f81YsuAmq79uCsZXE01lBBvTUwGptMLQXZtstaeExGobUcjCkUSB2CdW37dab0umJO+XqyS3SpNm1arlqcOR7ZCk3JG/Hs/uu1FHaPm5hhxIqvd3Am440+caND2luFhxbC/3FfL5cshpHqyRWCcsN6IjChrIxNPTVobe/pe7PORPSX0rNfV/7s/tVivnIGDnOM54cZOwPWznRiWnPyjWaP8zqe03u3KJ3nrvxQvi8u3mXGiGBXqO5SY0PiIbnb+gXEZfEvTHnzk27fosWJ1nA1UOh8hDrmoPOwhya1fhNskaYylNFdUg+Gz/SKqtMm25FWOs1jfVBhvogrr656dMU6ZmwIlmLfmps3uf3v7woujy440NnHcbTL/n0Ky0Y6zUuafTfWDagp80MotxthI+x9/RQ4JhZpX3DshA5vxd/EhR6WJAhU98rNaeT+t6KiXghi0plfHJKS09XYlKtNqlZitpYOa4wInaJU5bWXsgiNwO5XRXSylcwUH5Imot/rmVPunzjx8eiuVl9O9hfssiXQ4bjaIWo8rpK2O86UpEVnJCxl/QhLNOf5QHPGm1mBeH9xTsJ6vUr3fnIFHnNM76D8zNnURkSkPX6YFrfayDihnx0SwZsXbyN5i59fJvovdDP7tE/Hmyozz68GZq0uMHmxcV/5394m+h7x1rl5/+8obffUUu8d98R7jeXK4hBwtVD0c+FpprJ+OVbI8iyR8JZry23PjAzX8bVN199qpeeASuSNemn5uZ9bv/Li6LLgzs+0q3D4vVLHv1KM73E9RqXlPpPHixlw43gH8QtIkrxCJ+vHjXFyddAb3ElBKqsjbbmQUVdE6S1IdpNZXmUwqpOhrKtw/qROCnc6zmB9kiZ84/a0XJIkltZ9taQb2e8uSsuSr5i0jgL7ZajsD/GIIIRyWiG1BQbFMtNph04BTadr0Is9C1LWDoM7P+ctwZdr6LJJt9kshxHK2R8ThNqOjEdVMDJkhOA+VFZ+trkvAGNbmd1yn7V4PerYs9H2YwPYaqaRRCzBdZm/shL/9n8ckFt+ycMYSnyj/uX9MU3b2j7Q6Led8zbaKJ4fjm3Vnl1Sc8/uEWPz1/TO/dtPfDvJVx62HD1UAHGr7T2GFE71Zt0J76Pe6lK4npNb32QCbH1zU8e2uktJTeXNeqnsXDrwe1/eVF0eXDzNbUOm+uXYq9fTFO8/cLCIckc5XPcbKqTL746cgKFBm9dWTvUQUY5k7QZ0X2lCVSTmvt1OpnUpDn/MUuXBeUWXY9HReuNK8Vpl9OGQXNDv1ylD2g1eANEFvmSsk6yLGl+NyBl6tv1mR1llG8iWY6jVSLeFlq0t1mhymbNnrHa1K3t2YvicypXxVoj74VGdDtLSxearLQ02cPtV0Wfj9Z1fKh2zf9wkEte+i+Om7T9YIN+/EFZfgwvhGvNJfV+SfjanQ36s/yHuuZ3/OKW/b0L+v75ReC7b+hfL27Q3/92h+5fvKb2Clxt+Hoo7/GrrD1EukY0N2u9prE+MFEmH0n1zUseuumZktu69NMkdOZ9Tv/Li6LLg5uv6XVY0dcvpkmp/6TLezZsSKXTCre/kpto7TdF4SdBMkhpmhLmhhOscWZCqVhdPdyAnHv0RL6WGAYmBa7cVDrBekT6KF4bEoJxGkBcsyzeT5Z9NmdZ5Tt3uVl0tcky3yS440gpRz/K9K4oCJPIUm2f9mtEpycDe1wR1fa3bYVuMiBmWsLbWeDXB3m1s16+4f1lQvPQStx+VfT5KO95JiVOsOJVu8nGEf+mLi/9F827m7fovRfzg42fz1/R89K95Bgkr17T56cX9K0bZ+T8Ql3t+/4Nehx49Ofz1/TrbaKvJ0taqHhgtXOiHop+LvAt7fHLemNb35fuzkvdjOLPNWG9tkjs+kBDH5ipb176VDM9DbldiX6aCLcei4T3v+xYb3lwx0d6eYRT9PWLInm9xiXdesg9gNLPLxnlsFqzFq8Uqh+RFbGJVr5VwWjeLo5/pjdoS6VFT5rLizQ+X/PI4DilJu17rindN1APLsoPq0Sl0pS6T0OmXKbcZGDPQPRiGfwoENhTH/dKp6Ro0aafM4OcJKpW+HVb2oGLRdmDslgMnmo+X0+68pTEihy3WeWbWC7WOHKUo0dvVFpPyMRwM6U35CRaqtoyVQdQ4vdStZpyMjBfPredfVHKHX0wOnZNv/Xb2Uz5NPMN6S9BH3Rev9Kfj67bPKONY+pb8gZ/KwLSLzk6mF1e+i8M6WZz+zW1fe41b+irb17Kg5LPNjcSUtigTz64SeN/KyuUb7/7jb746QZ9WrvtOSi5SY3aLXr+wyVVPrpLn9yJTk2LpHZm6SFHHiKGmk8eFWodeWWRYj2ZUL65NcIyMS0WiV+vaawPdPWBofrmo0910tOU29r3Ux68evD737x43HmQuW5fc3lwxyW3Hjyy20/zYciXsV7jkmY9JA+gEg+m0+0vb3h91SxxN7bnwyi/5nHnkLq1nrzSSHlFjajtuR5qcNCgTV969ucN4bO5nA9VUr7KfMzzhZIlg9YJhLmStpmtCIzaLtPZzIfPnvzaXSpbtdW8ObbzPx41ySqH3UqgIzdx9RLJa7Pm/th2XRq7ISZcJU/7evG39dVAtMszGcPl7MzTgqmCHLpt7JVFVBubzNebrHC5qcZMfBnlm0TkOPL3MjH5bdsPuP1ZjNn2yO7fZX9yuuM8SW+wcdvXdTFwfw8o59zKJ9pZqoTgON/y9UFuO5sun06+026XKOg7HRxI7H6lNx9dl3lG+Tp7Fh9uvI4QfVD1yiKkT2WBdjvb7XjYrVHP244+/ZuT/vMhDi5u059/eknt78JihKiDEvrbXbIeEP34w2+h7jePP7xLb0/tzzwuNMIS5Wt7SSdikshDmAf/pS9PX8rfv/qd6LOP7tHHLy4CBzMpSGpnph4Kl4dKy/uY9noyqXyONcJyMS3C841er2msD5h6zfu8kfrmpE/Z6enKbd37KRdWPXTWp26yhtYlnnKutTy445JdDx7cehhfl2jAWa+xy6er/yot2svQ5f2thw8f/pFJylcV8dbJKqdTZvqZ2UrNorLpDu55E1iMoE3g2uH0wcmqAkyCNSEjnbdurHSeAUshZUXxGwhxw8374oaaS/rylHkV8Ow75PmeOmShiMMT9zsvfnpJn58HD2HUd9/zpedHHZxNruALEZcs9UuGaaeeL6+KPr0q9QDgKpH/uJRzVu00sxcdMYFbgewA/U16Omt892q3bsibAvO4d8Fn8cZDnXQWJWgTAABcV/KdZ4AJqs6bvsW3rY8/vEef0gW1T8NvuIkk9FacS+qdhluCJOcT/V110OO+5pvolXOtEG+hs1nwZLZeW4rs6rtarko9AADGcFyP4m5+XRYcksRiK+bDFvXtxc/MKHkVprmeBcuovZvNGx1xULIVe78OAACAzMlpngFmGBxQ3P5NxAthWY4syVL5JNQBxLCK9RoAAAA/K9jHwt0GAAAAAAAAAAAAgNzbbQAAAAAAAAAAAACuOf8Pqdf7whdld9wAAAAASUVORK5CYII="><br>    本人把1-7步做了一遍，最后新增文件夹/var/data并赋予权限后成功</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://codecloud.net/60534.html" target="_blank" rel="external">CentOS 6.8 源码安装mysql 5.6</a><br><a href="http://blog.csdn.net/zqtsx/article/details/9378703" target="_blank" rel="external">Linux源码安装mysql 5.6.12 （cmake编译）</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux-mysql/" rel="tag">#linux, mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/28/python技巧/" rel="next" title="python skill">
+                <i class="fa fa-chevron-left"></i> python skill
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/20/常用脚本/" rel="prev" title="常用脚本">
+                常用脚本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/13/CentOS6-8-Mysql5.6-安装/"
+           data-title="CentOS6.8 Mysql5.6 编译安装" data-url="http://gongchangmumu.com/2016/11/13/CentOS6-8-Mysql5.6-安装/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnyr.com1.z0.glb.clouddn.com/avatar1.jpg"
+               alt="atumu" />
+          <p class="site-author-name" itemprop="name">atumu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://git.oschina.net/atumu" target="_blank" title="gitosc">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  gitosc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/atumu" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装编译代码需要的包"><span class="nav-number">2.</span> <span class="nav-text">安装编译代码需要的包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建MySQL用户（但是不能使用MySQL账号登陆系统）"><span class="nav-number">3.</span> <span class="nav-text">创建MySQL用户（但是不能使用MySQL账号登陆系统）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载MySQL源码"><span class="nav-number">4.</span> <span class="nav-text">下载MySQL源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译并安装"><span class="nav-number">5.</span> <span class="nav-text">编译并安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置MySQL"><span class="nav-number">6.</span> <span class="nav-text">配置MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动mysql"><span class="nav-number">7.</span> <span class="nav-text">启动mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机启动"><span class="nav-number">8.</span> <span class="nav-text">开机启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置用户"><span class="nav-number">9.</span> <span class="nav-text">配置用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置防火墙"><span class="nav-number">10.</span> <span class="nav-text">配置防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他错误"><span class="nav-number">11.</span> <span class="nav-text">其他错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">atumu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"atumu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

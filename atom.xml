@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>atumu&#39; blog</title>
+  <subtitle>write the code,change the world!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://gongchangmumu.com/"/>
+  <updated>2016-08-29T15:06:49.728Z</updated>
+  <id>http://gongchangmumu.com/</id>
+  
+  <author>
+    <name>atumu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用脚本</title>
+    <link href="http://gongchangmumu.com/2020/12/20/%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/"/>
+    <id>http://gongchangmumu.com/2020/12/20/常用脚本/</id>
+    <published>2020-12-20T12:03:37.000Z</published>
+    <updated>2016-08-29T15:06:49.728Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Github传送门&quot;&gt;&lt;a href=&quot;#Github传送门&quot; class=&quot;headerlink&quot; title=&quot;Github传送门&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/atumu/scripts&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github传送门&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;项目&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;check-keyword-in-a-dir&lt;/td&gt;
+&lt;td&gt;从目录下文件中查找关键字，并列出文件所在目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;export-mysql-schema-to-excel&lt;/td&gt;
+&lt;td&gt;将MySQL表的数据结构输出到excel&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;export-mysql-table-data-to-excel&lt;/td&gt;
+&lt;td&gt;将MySQL表的数据输出到excel&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mybatis-generator-core&lt;/td&gt;
+&lt;td&gt;修改mybaies-generator-core源码，使其能带有中文注释&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;refresh-ip-to-git&lt;/td&gt;
+&lt;td&gt;bash+python+crontab，定期检查外网ip并刷新到git repo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;simple-mail&lt;/td&gt;
+&lt;td&gt;简单的发送邮件util&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Github传送门&quot;&gt;&lt;a href=&quot;#Github传送门&quot; class=&quot;headerlink&quot; title=&quot;Github传送门&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/atumu/scripts&quot; target=&quot;_blank&quot; 
+    
+    </summary>
+    
+      <category term="python" scheme="http://gongchangmumu.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://gongchangmumu.com/tags/python/"/>
+    
+      <category term="bash" scheme="http://gongchangmumu.com/tags/bash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS6.8 Mysql5.6 编译安装</title>
+    <link href="http://gongchangmumu.com/2016/11/13/CentOS6-8-Mysql5.6-%E5%AE%89%E8%A3%85/"/>
+    <id>http://gongchangmumu.com/2016/11/13/CentOS6-8-Mysql5.6-安装/</id>
+    <published>2016-11-13T02:38:40.000Z</published>
+    <updated>2016-11-13T11:08:07.271Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;卸载旧版本&quot;&gt;&lt;a href=&quot;#卸载旧版本&quot; class=&quot;headerlink&quot; title=&quot;卸载旧版本&quot;&gt;&lt;/a&gt;卸载旧版本&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;查找旧版本&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pm -qa | grep -i mysql &lt;span class=&quot;comment&quot;&gt;# -i 忽略大小写&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rpm &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; xxx &lt;span class=&quot;comment&quot;&gt;#删除模式 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rpm &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; --nodeps xxx &lt;span class=&quot;comment&quot;&gt;# 强力删除模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm /etc/my.cnf &lt;span class=&quot;comment&quot;&gt;#删除/etc/my.cnf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;安装编译代码需要的包&quot;&gt;&lt;a href=&quot;#安装编译代码需要的包&quot; class=&quot;headerlink&quot; title=&quot;安装编译代码需要的包&quot;&gt;&lt;/a&gt;安装编译代码需要的包&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum -y install make gcc-c++ cmake bison-devel ncurses-devel&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;创建MySQL用户（但是不能使用MySQL账号登陆系统）&quot;&gt;&lt;a href=&quot;#创建MySQL用户（但是不能使用MySQL账号登陆系统）&quot; class=&quot;headerlink&quot; title=&quot;创建MySQL用户（但是不能使用MySQL账号登陆系统）&quot;&gt;&lt;/a&gt;创建MySQL用户（但是不能使用MySQL账号登陆系统）&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;groupadd mysql &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;useradd &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; /sbin/nologin -g mysql mysql&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;下载MySQL源码&quot;&gt;&lt;a href=&quot;#下载MySQL源码&quot; class=&quot;headerlink&quot; title=&quot;下载MySQL源码&quot;&gt;&lt;/a&gt;下载MySQL源码&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载地址（找到MySQL-5.6.小版本号.tar.gz下载）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-5.6/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-5.6/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编译源码&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/src&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar zxvf MySQL-5.6.33.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; MySQL-5.6.33/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cmake \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DCMAKE_INSTALL_PREFIX=/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/mysql \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DMYSQL_DATADIR=/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/mysql/data \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DSYSCONFDIR=/etc \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DWITH_MYISAM_STORAGE_ENGINE=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DWITH_INNOBASE_STORAGE_ENGINE=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DWITH_MEMORY_STORAGE_ENGINE=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DWITH_READLINE=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DMYSQL_UNIX_ADDR=/tmp/mysqld.sock \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DMYSQL_TCP_PORT=3306 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DENABLED_LOCAL_INFILE=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DWITH_PARTITION_STORAGE_ENGINE=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DEXTRA_CHARSETS=all \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DDEFAULT_CHARSET=utf8 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	-DDEFAULT_COLLATION=utf8_general_ci&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;cmake注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \   #安装路径
+    -DMYSQL_DATADIR=/usr/local/mysql/data       \    #数据文件存放位置
+    -DSYSCONFDIR=/etc              \                                  #my.cnf路径
+    -DWITH_MYISAM_STORAGE_ENGINE=1    \       #支持MyIASM引擎
+    -DWITH_INNOBASE_STORAGE_ENGINE=1 \     #支持InnoDB引擎
+    -DWITH_MEMORY_STORAGE_ENGINE=1 \        #支持Memory引擎
+    -DWITH_READLINE=1                    \                         #快捷键功能(我没用过)
+    -DMYSQL_UNIX_ADDR=/tmp/mysqld.sock      \   #连接数据库socket路径
+    -DMYSQL_TCP_PORT=3306                  \               #端口
+    -DENABLED_LOCAL_INFILE=1            \                #允许从本地导入数据
+    -DWITH_PARTITION_STORAGE_ENGINE=1  \   #安装支持数据库分区
+    -DEXTRA_CHARSETS=all                  \                   #安装所有的字符集
+    -DDEFAULT_CHARSET=utf8              \                   #默认字符
+    -DDEFAULT_COLLATION=utf8_general_ci
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;编译并安装&quot;&gt;&lt;a href=&quot;#编译并安装&quot; class=&quot;headerlink&quot; title=&quot;编译并安装&quot;&gt;&lt;/a&gt;编译并安装&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;make &amp;amp;&amp;amp; make install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;配置MySQL&quot;&gt;&lt;a href=&quot;#配置MySQL&quot; class=&quot;headerlink&quot; title=&quot;配置MySQL&quot;&gt;&lt;/a&gt;配置MySQL&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;命令&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/mysql  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chown -R mysql .  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chgrp -R mysql .  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;scripts/mysql_install_db --user=mysql  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chown -R root .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;说明&lt;br&gt; cd /usr/local/mysql&lt;br&gt; chown -R mysql:mysql . # (为了安全安装完成后请修改权限给root用户)&lt;br&gt; scripts/mysql_install_db –user=mysql (先进行这一步再做如下权限的修改)&lt;br&gt; chown -R root:mysql .  (将权限设置给root用户，并设置给mysql组， 取消其他用户的读写执行权限，仅留给mysql “rx”读执行权限，其他用户无任何权限)&lt;br&gt; chown -R mysql:mysql ./data   (给数据库存放目录设置成mysql用户mysql组，并赋予chmod -R ug+rwx  读写执行权限，其他用户权限一律删除仅给mysql用户权限)    &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;将mysql的配置文件拷贝到/etc&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cp support-files/my-default.cnf /etc/my.cnf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;启动mysql&quot;&gt;&lt;a href=&quot;#启动mysql&quot; class=&quot;headerlink&quot; title=&quot;启动mysql&quot;&gt;&lt;/a&gt;启动mysql&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;将mysql的启动服务添加到系统服务中&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cp support-files/mysql.server /etc/init.d/mysqld&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动mysql&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service mysqld start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;停止mysql服务&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service mysqld stop&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重启mysql服务&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service mysqld restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;开机启动&quot;&gt;&lt;a href=&quot;#开机启动&quot; class=&quot;headerlink&quot; title=&quot;开机启动&quot;&gt;&lt;/a&gt;开机启动&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chkconfig --add mysqld&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;配置用户&quot;&gt;&lt;a href=&quot;#配置用户&quot; class=&quot;headerlink&quot; title=&quot;配置用户&quot;&gt;&lt;/a&gt;配置用户&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;设置PATH&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改/etc/profile文件，在文件末尾添加&lt;br&gt;export PATH=/usr/local/mysql/bin:$PATH&lt;/li&gt;
+&lt;li&gt;让配置立即生效&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt; /etc/profile&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;进入MySQL&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mysql -h127.0.0.1 -uroot&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改root密码&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mysql&amp;gt; &lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; password=password(&lt;span class=&quot;string&quot;&gt;&#39;123456&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;远程访问&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GRANT ALL PRIVILEGES ON *.* TO &lt;span class=&quot;string&quot;&gt;&#39;root&#39;&lt;/span&gt;@&lt;span class=&quot;string&quot;&gt;&#39;%&#39;&lt;/span&gt; IDENTIFIED BY &lt;span class=&quot;string&quot;&gt;&#39;123456&#39;&lt;/span&gt; WITH GRANT OPTION;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FLUSH PRIVILEGES; // 授权立即生效&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;配置防火墙&quot;&gt;&lt;a href=&quot;#配置防火墙&quot; class=&quot;headerlink&quot; title=&quot;配置防火墙&quot;&gt;&lt;/a&gt;配置防火墙&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;开启3306&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim /etc/sysconfig/iptables&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 添加一行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-A INPUT -m state --state NEW -m tcp -p -dport 3306 -j ACCEPT
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;重启防火墙 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service iptables restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;其他错误&quot;&gt;&lt;a href=&quot;#其他错误&quot; class=&quot;headerlink&quot; title=&quot;其他错误&quot;&gt;&lt;/a&gt;其他错误&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.rekfan.com/articles/186.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;1. MySql提示:The server quit without updating PID file(…)失败&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;主要内容（备份）：
+1.可能是/usr/local/mysql/data/rekfan.pid文件没有写的权限
+解决方法 ：给予权限，执行 “chown -R mysql:mysql /var/data” “chmod -R 755 /usr/local/mysql/data”  然后重新启动mysqld！
+
+2.可能进程里已经存在mysql进程
+解决方法：用命令“ps -ef|grep mysqld”查看是否有mysqld进程，如果有使用“kill -9  进程号”杀死，然后重新启动mysqld！
+
+3.可能是第二次在机器上安装mysql，有残余数据影响了服务的启动。
+解决方法：去mysql的数据目录/data看看，如果存在mysql-bin.index，就赶快把它删除掉吧，它就是罪魁祸首了。本人就是使用第三条方法解决的 ！http://blog.rekfan.com/?p=186
+
+4.mysql在启动时没有指定配置文件时会使用/etc/my.cnf配置文件，请打开这个文件查看在[mysqld]节下有没有指定数据目录(datadir)。
+解决方法：请在[mysqld]下设置这一行：datadir = /usr/local/mysql/data
+
+5.skip-federated字段问题
+解决方法：检查一下/etc/my.cnf文件中有没有没被注释掉的skip-federated字段，如果有就立即注释掉吧。
+
+6.错误日志目录不存在
+解决方法：使用“chown” “chmod”命令赋予mysql所有者及权限
+
+7.selinux惹的祸，如果是centos系统，默认会开启selinux
+解决方法：关闭它，打开/etc/selinux/config，把SELINUX=enforcing改为SELINUX=disabled后存盘退出重启机器试试。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一直报错：&lt;br&gt;&lt;img src=&quot;data:image/png;base64,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&quot;&gt;&lt;br&gt;    本人把1-7步做了一遍，最后新增文件夹/var/data并赋予权限后成功&lt;/p&gt;
+&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://codecloud.net/60534.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CentOS 6.8 源码安装mysql 5.6&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/zqtsx/article/details/9378703&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux源码安装mysql 5.6.12 （cmake编译）&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;卸载旧版本&quot;&gt;&lt;a href=&quot;#卸载旧版本&quot; class=&quot;headerlink&quot; title=&quot;卸载旧版本&quot;&gt;&lt;/a&gt;卸载旧版本&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;查找旧版本&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pm -qa | grep -i mysql &lt;span class=&quot;comment&quot;&gt;# -i 忽略大小写&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rpm &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; xxx &lt;span class=&quot;comment&quot;&gt;#删除模式 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rpm &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; --nodeps xxx &lt;span class=&quot;comment&quot;&gt;# 强力删除模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm /etc/my.cnf &lt;span class=&quot;comment&quot;&gt;#删除/etc/my.cnf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;安装编译代码需要的包&quot;&gt;&lt;a href=&quot;#安装编译代码需要的包&quot; class=&quot;headerlink&quot; title=&quot;安装编译代码需要的包&quot;&gt;&lt;/a&gt;安装编译代码需要的包&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum -y install make gcc-c++ cmake bison-devel ncurses-devel&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="mysql" scheme="http://gongchangmumu.com/categories/mysql/"/>
+    
+    
+      <category term="linux, mysql" scheme="http://gongchangmumu.com/tags/linux-mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python skill</title>
+    <link href="http://gongchangmumu.com/2016/08/28/python%E6%8A%80%E5%B7%A7/"/>
+    <id>http://gongchangmumu.com/2016/08/28/python技巧/</id>
+    <published>2016-08-28T15:22:25.000Z</published>
+    <updated>2016-08-28T14:12:09.493Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Python脚本中使用命令行管道数据&quot;&gt;&lt;a href=&quot;#Python脚本中使用命令行管道数据&quot; class=&quot;headerlink&quot; title=&quot;Python脚本中使用命令行管道数据&quot;&gt;&lt;/a&gt;Python脚本中使用命令行管道数据&lt;/h1&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# encoding: utf-8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; sys;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;names = &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;names = sys.stdin.readlines();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; names;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;执行命令行：    &lt;code&gt;$ ls / | python test.py&lt;/code&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Python脚本中使用命令行管道数据&quot;&gt;&lt;a href=&quot;#Python脚本中使用命令行管道数据&quot; class=&quot;headerlink&quot; title=&quot;Python脚本中使用命令行管道数据&quot;&gt;&lt;/a&gt;Python脚本中使用命令行管道数据&lt;/h1&gt;&lt;figure c
+    
+    </summary>
+    
+      <category term="python" scheme="http://gongchangmumu.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://gongchangmumu.com/tags/python/"/>
+    
+      <category term="skill" scheme="http://gongchangmumu.com/tags/skill/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven常用命令</title>
+    <link href="http://gongchangmumu.com/2016/08/28/Maven%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://gongchangmumu.com/2016/08/28/Maven常用命令/</id>
+    <published>2016-08-28T09:18:59.000Z</published>
+    <updated>2016-08-28T14:09:32.063Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Maven常用命令&quot;&gt;&lt;a href=&quot;#Maven常用命令&quot; class=&quot;headerlink&quot; title=&quot;Maven常用命令&quot;&gt;&lt;/a&gt;Maven常用命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. 打包
+    mvn clean package -Dmaven.test.skip=true -P online
+
+2. 依赖分析
+    mvn dependency:list&amp;gt; dep.log
+    mvn dependency:tree &amp;gt; dep.log
+    mvn dependency:analyze&amp;gt; dep.log
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;pre&gt;&lt;code&gt;3. eclipse:
+    mvn eclipse:eclipse -DdownloadSources=true
+
+4. IDEA:
+    mvn idea:idea
+    在IDEA里构建maven项目较慢解决办法，添加参数 archetypeCatalog=local
+
+
+5. Maven常用命令(摘自他处)：
+    1. 创建Maven的普通java项目：
+       mvn archetype:create
+       -DgroupId=packageName
+       -DartifactId=projectName
+    2. 创建Maven的Web项目：
+        mvn archetype:create
+        -DgroupId=packageName
+        -DartifactId=webappName
+        -DarchetypeArtifactId=maven-archetype-webapp
+    3. 编译源代码： mvn compile
+    4. 编译测试代码：mvn test-compile
+    5. 运行测试：mvn test
+    6. 产生site：mvn site
+    7. 生成target目录，编译、测试代码，生成测试报告，生成jar/war文件: mvn package
+    8. 在本地Repository中安装jar：mvn install
+    9. 清除产生的项目：mvn clean
+    10. 生成eclipse项目：mvn eclipse:eclipse
+    11. 生成idea项目：mvn idea:idea
+    12. 组合使用goal命令，如只打包不测试：mvn -Dtest package
+    13. 编译测试的内容：mvn test-compile
+    14. 只打jar包: mvn jar:jar
+    15. 只测试而不编译，也不测试编译：mvn test -skipping compile -skipping test-compile ( -skipping 的灵活运用，当然也可以用于其他组合命令)
+    16. 清除eclipse的一些系统设置:mvn eclipse:clean
+    17.将项目转化为Eclipse项目:mvn eclipse:eclipse
+    18.显示版本信息:mvn -version/-v
+    19.编译并测试:mvn test
+    20.运行项目于jetty上: mvn jetty:run
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Maven常用命令&quot;&gt;&lt;a href=&quot;#Maven常用命令&quot; class=&quot;headerlink&quot; title=&quot;Maven常用命令&quot;&gt;&lt;/a&gt;Maven常用命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. 打包
+    mvn clean package -Dmaven.test.skip=true -P online
+
+2. 依赖分析
+    mvn dependency:list&amp;gt; dep.log
+    mvn dependency:tree &amp;gt; dep.log
+    mvn dependency:analyze&amp;gt; dep.log
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://gongchangmumu.com/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://gongchangmumu.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql-索引</title>
+    <link href="http://gongchangmumu.com/2016/08/28/Mysql-%E7%B4%A2%E5%BC%95/"/>
+    <id>http://gongchangmumu.com/2016/08/28/Mysql-索引/</id>
+    <published>2016-08-28T09:18:59.000Z</published>
+    <updated>2016-08-28T14:09:33.460Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;索引类型&quot;&gt;&lt;a href=&quot;#索引类型&quot; class=&quot;headerlink&quot; title=&quot;索引类型&quot;&gt;&lt;/a&gt;索引类型&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;索引是在MYSQL的存储引擎层中实现的，而不是在服务层实现的。所以每种存储引擎的索引都不一定完全相同，也不是所有的存储引擎都支持所有的索引类型。MYSQL目前提供了一下4种索引。
+    ○ B-Tree 索引：最常见的索引类型，大部分引擎都支持B树索引。
+    ○ HASH 索引：只有Memory引擎支持，使用场景简单。
+    ○ R-Tree 索引(空间索引)：空间索引是MyISAM的一种特殊索引类型，主要用于地理空间数据类型。
+    ○ Full-text (全文索引)：全文索引也是MyISAM的一种特殊索引类型，主要用于全文索引，InnoDB从MYSQL5.6版本提供对全文索引的支持。
+
+B-TREE
+    ○ 普通索引
+    新增-create index index_name on table(column(prefix_length)…)
+    修改-alter table table_name add index index_name (column(prefix_length)…)
+    删除-drop index  index_name on table_name;  alter table table_name drop index_name
+    查看-show index from tbl_name, show keys from tbl_name        
+    &amp;lt;img src=&amp;quot;索引参考图.jpg&amp;quot;/&amp;gt;
+
+
+    ○ UNIQUE索引
+    唯一性(不允许重复),如身份证索引
+    ○ 主键：PRIMARY KEY索引
+    主键是一种唯一性索引，但它必须指定为“PRIMARY KEY”
+    一个表只可能有一个PRIMARY KEY索引，因此不需要指定索引名
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;索引选择性&quot;&gt;&lt;a href=&quot;#索引选择性&quot; class=&quot;headerlink&quot; title=&quot;索引选择性&quot;&gt;&lt;/a&gt;索引选择性&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;索引的选择性（Selectivity），是指不重复的索引值（也叫基数，Cardinality）与表记录数（#T）的比值：
+Index Selectivity = Cardinality / #T
+SELECT count(DISTINCT(title))/count(*) AS Selectivity FROM employees.titles;
+原则
+    1. 较频繁的作为查询条件的字段应该创建索引
+    2.  唯一性太差的字段不适合单独创建索引，即使频繁作为查询条件
+    3.  更新非常频繁的字段不适合创建索引
+    4.  不会出现在 WHERE 子句中的字段不该创建索引
+原则细述
+    ○ 考虑使用索引的主要有 两种类型的列：在where子句中出现的列，在join子句中出现的列，而不是在SELECT关键字后选择列表的列
+    ○ 索引列的基数越大，索引的效果越好。例如生日，反例如性别
+    ○ 使用短索引，如果对字符串列进行索引，应该指定一个前缀长度，可节省大量索引空间，提升查询速度；
+    ○ 利用最左前缀
+ 索引选择注意事项
+既然索引可以加快查询速度，那么是不是只要是查询语句需要，就建上索引？答案是否定的。因为索引虽然加快了查询速度，但索引也是有代价的：索引文件本身要消耗存储空间，同时索引会加重插入、删除和修改记录时的负担，另外，MySQL在运行时也要消耗资源维护索引，因此索引并不是越多越好。
+MySQL只对一下操作符才使用索引：&amp;lt;,&amp;lt;=,=,&amp;gt;,&amp;gt;=,between,in, 以及某些时候的like(不以通配符%或_开头的情形)。 
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;PS&quot;&gt;&lt;a href=&quot;#PS&quot; class=&quot;headerlink&quot; title=&quot;PS&quot;&gt;&lt;/a&gt;PS&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;前缀索引
+# 全列选择性
+2 SELECT COUNT(DISTINCT column_name) / COUNT(*) FROM table_name;
+3 
+4 # 测试某一长度前缀的选择性
+5 SELECT COUNT(DISTINCT LEFT(column_name, prefix_length)) / COUNT(*) FROM table_name;
+当前缀的选择性越接近全列选择性的时候，索引效果越好。
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;索引类型&quot;&gt;&lt;a href=&quot;#索引类型&quot; class=&quot;headerlink&quot; title=&quot;索引类型&quot;&gt;&lt;/a&gt;索引类型&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;索引是在MYSQL的存储引擎层中实现的，而不是在服务层实现的。所以每种存储引擎的索引都不一定完全相同，也不是所有的存储引擎都支持所有的索引类型。MYSQL目前提供了一下4种索引。
+    ○ B-Tree 索引：最常见的索引类型，大部分引擎都支持B树索引。
+    ○ HASH 索引：只有Memory引擎支持，使用场景简单。
+    ○ R-Tree 索引(空间索引)：空间索引是MyISAM的一种特殊索引类型，主要用于地理空间数据类型。
+    ○ Full-text (全文索引)：全文索引也是MyISAM的一种特殊索引类型，主要用于全文索引，InnoDB从MYSQL5.6版本提供对全文索引的支持。
+
+B-TREE
+    ○ 普通索引
+    新增-create index index_name on table(column(prefix_length)…)
+    修改-alter table table_name add index index_name (column(prefix_length)…)
+    删除-drop index  index_name on table_name;  alter table table_name drop index_name
+    查看-show index from tbl_name, show keys from tbl_name        
+    &amp;lt;img src=&amp;quot;索引参考图.jpg&amp;quot;/&amp;gt;
+
+
+    ○ UNIQUE索引
+    唯一性(不允许重复),如身份证索引
+    ○ 主键：PRIMARY KEY索引
+    主键是一种唯一性索引，但它必须指定为“PRIMARY KEY”
+    一个表只可能有一个PRIMARY KEY索引，因此不需要指定索引名
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://gongchangmumu.com/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://gongchangmumu.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 常用命令</title>
+    <link href="http://gongchangmumu.com/2016/08/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://gongchangmumu.com/2016/08/28/Linux常用命令/</id>
+    <published>2016-08-28T09:18:59.000Z</published>
+    <updated>2016-09-04T13:54:37.461Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;进程控制&quot;&gt;&lt;a href=&quot;#进程控制&quot; class=&quot;headerlink&quot; title=&quot;进程控制&quot;&gt;&lt;/a&gt;进程控制&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. Mysql
+    检测是否安装Mysql输入：     #rpm -qa | grep -i mysql
+    查看mysql运行状态    ps -ef|grep mysqld
+    强制关闭MySQL    killall mysql
+    停止    /usr/bin/mysqladmin -u root -p shutdown
+    启动    /etc/init.d/mysql start
+2. Redis
+    检查Redis服务器系统进程    ps -aux|grep redis例子：
+        redis     4162  0.1  0.0  10676  1420 ?        Ss   23:24   0:00 /usr/bin/redis-server /etc/redis/redis.conf
+        conan     4172  0.0  0.0  11064   924 pts/0    S+   23:26   0:00 grep --color=auto redis
+    通过启动命令检查Redis服务器状态    netstat -nlp|grep 6379；sudo netstat -tap | grep mysql
+    通过启动命令检查Redis服务器状态    sudo /etc/init.d/redis-server status
+
+3. 查看某一端口的占用情况    lsof -i:端口号     
+4. 解压    unzip -o cms.war -d cms    
+5. 安装记录    dpkg-query -l &amp;apos;foo*&amp;apos;    
+6. 查看系统    lsb_release -a; uname -a
+7. 后台运行     nohup … &amp;gt;out.log &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;wget下载&quot;&gt;&lt;a href=&quot;#wget下载&quot; class=&quot;headerlink&quot; title=&quot;wget下载&quot;&gt;&lt;/a&gt;wget下载&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. 重命名    wget -O wordpress.zip http://www.minjieren.com/download.aspx?id=1080
+2. 断电续传    wget -c http://www.minjieren.com/wordpress-3.1-zh_CN.zip
+3. 后台下载    wget -b http://www.minjieren.com/wordpress-3.1-zh_CN.zip
+4. 查看进度    tail -f wget-log
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;系统服务&quot;&gt;&lt;a href=&quot;#系统服务&quot; class=&quot;headerlink&quot; title=&quot;系统服务&quot;&gt;&lt;/a&gt;系统服务&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. 查看IP    ifconfig eth0 | grep inet | awk &amp;apos;{ print $2 }&amp;apos;
+2. service list    service --status-all
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h1 id=&quot;查找文件&quot;&gt;&lt;a href=&quot;#查找文件&quot; class=&quot;headerlink&quot; title=&quot;查找文件&quot;&gt;&lt;/a&gt;查找文件&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;find    查询所有文件类型 ps:     find . -name filename
+which    可执行文件
+whereis    二进制文件、说明文档、源文件
+dpkg -L soft    查看软件安装文件
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;防火墙&quot;&gt;&lt;a href=&quot;#防火墙&quot; class=&quot;headerlink&quot; title=&quot;防火墙&quot;&gt;&lt;/a&gt;防火墙&lt;/h1&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;进程控制&quot;&gt;&lt;a href=&quot;#进程控制&quot; class=&quot;headerlink&quot; title=&quot;进程控制&quot;&gt;&lt;/a&gt;进程控制&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. Mysql
+    检测是否安装Mysql输入：     #rpm -qa | grep -i mysql
+    查看mysql运行状态    ps -ef|grep mysqld
+    强制关闭MySQL    killall mysql
+    停止    /usr/bin/mysqladmin -u root -p shutdown
+    启动    /etc/init.d/mysql start
+2. Redis
+    检查Redis服务器系统进程    ps -aux|grep redis例子：
+        redis     4162  0.1  0.0  10676  1420 ?        Ss   23:24   0:00 /usr/bin/redis-server /etc/redis/redis.conf
+        conan     4172  0.0  0.0  11064   924 pts/0    S+   23:26   0:00 grep --color=auto redis
+    通过启动命令检查Redis服务器状态    netstat -nlp|grep 6379；sudo netstat -tap | grep mysql
+    通过启动命令检查Redis服务器状态    sudo /etc/init.d/redis-server status
+
+3. 查看某一端口的占用情况    lsof -i:端口号     
+4. 解压    unzip -o cms.war -d cms    
+5. 安装记录    dpkg-query -l &amp;apos;foo*&amp;apos;    
+6. 查看系统    lsb_release -a; uname -a
+7. 后台运行     nohup … &amp;gt;out.log &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://gongchangmumu.com/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://gongchangmumu.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试感悟----一名3年工作经验的程序员应该具备的技能</title>
+    <link href="http://gongchangmumu.com/2016/04/07/%E9%9D%A2%E8%AF%95%E6%84%9F%E6%82%9F----%E4%B8%80%E5%90%8D3%E5%B9%B4%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E5%85%B7%E5%A4%87%E7%9A%84%E6%8A%80%E8%83%BD/"/>
+    <id>http://gongchangmumu.com/2016/04/07/面试感悟----一名3年工作经验的程序员应该具备的技能/</id>
+    <published>2016-04-07T08:25:00.000Z</published>
+    <updated>2016-04-11T15:46:45.252Z</updated>
+    
+    <content type="html">&lt;p&gt;原文地址 &lt;a href=&quot;http://www.cnblogs.com/xrq730/p/5260294.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/xrq730/p/5260294.html&lt;/a&gt; ，转载请注明出处，谢谢！&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;前言&lt;/p&gt;
+&lt;p&gt;因为和同事有约定再加上LZ自己也喜欢做完一件事之后进行总结，因此有了这篇文章。这篇文章大部分内容都是面向整个程序员群体的，当然因为LZ本身是做Java开发的，因此有一部分内容也是专门面向咱们Java程序员的。&lt;/p&gt;
+&lt;p&gt;简单先说一下，LZ坐标杭州，13届本科毕业，算上年前在阿里巴巴B2B事业部的面试，一共有面试了有6家公司（因为LZ不想请假，因此只是每个晚上去其他公司面试，所以面试的公司比较少），其中成功的有4家，另外两家失败的原因在于：&lt;/p&gt;
+&lt;p&gt;1、阿里巴巴B2B事业部的面试，两轮技术面试都过了，最后一轮面试是对方的主管，由于听说技术面试过了基本上90%都面试成功了，所以LZ在和主管的交谈中也是毫无顾忌，说得天花乱坠，很多自己介于知道和不知道的东西都直接脱口而出了，结果多次被对方一反问就问得哑口无言。事后想来，模棱两可的答案是面试中最忌讳的，这次的失败也让LZ认真地对待后面的每一次面试&lt;/p&gt;
+&lt;p&gt;2、另外一家失败的是一家小公司，也就20来个人吧，整个团队是支付宝出来创业的，非常厉害。面试完LZ多方了解了一下，对方认为我基本功什么的都不错，但是实际项目经验还是欠缺一些，因为对方是创业型公司，需要人上手就能干活，因此我在这个时候还不是特别适合他们团队&lt;/p&gt;
+&lt;p&gt;至于其他成功的四家公司，给LZ的面试评价都挺高的貌似，但LZ也不想记流水账，因此就不一一列举每家公司的面试过程了，下面LZ主要谈谈作为一名工作三年左右的Java程序员应该具备的一些技能以及个人的一些其他感悟。&lt;/p&gt;
+&lt;p&gt;关于程序员的几个阶段&lt;/p&gt;
+&lt;p&gt;每个程序员、或者说每个工作者都应该有自己的职业规划，如果看到这里的朋友没有自己的职业规划，希望你可以思考一下自己的将来。&lt;/p&gt;
+&lt;p&gt;LZ常常思考自己的未来，也从自己的思考中总结出了一些东西，作为第一部分来谈谈。LZ认为一名程序员应该有几个阶段（以下时间都算上实习期）：&lt;br&gt;第一阶段—-三年&lt;br&gt;我认为三年对于程序员来说是第一个门槛，这个阶段将会淘汰掉一批不适合写代码的人。这一阶段，我们走出校园，迈入社会，成为一名程序员，正式从书本上的内容迈向真正的企业级开发。我们知道如何团队协作、如何使用项目管理工具、项目版本如何控制、我们写的代码如何测试如何在线上运行等等，积累了一定的开发经验，也对代码有了一定深入的认识，是一个比较纯粹的Coder的阶段&lt;/p&gt;
+&lt;p&gt;第二阶段—-五年&lt;br&gt;五年又是区分程序员的第二个门槛。有些人在三年里，除了完成工作，在空余时间基本不会研究别的东西，这些人永远就是个Coder，年纪大一些势必被更年轻的人给顶替；有些人在三年里，除了写代码之外，还热衷于研究各种技术实现细节、看了N多好书、写一些博客、在Github上分享技术，这些人在五年后必然具备在技术上独当一面的能力并且清楚自己未来的发展方向，从一个Coder逐步走向系统分析师或是架构师，成为项目组中不可或缺的人物&lt;/p&gt;
+&lt;p&gt;第三阶段—-十年&lt;br&gt;十年又是另一个门槛了，转行或是继续做一名程序员就在这个节点上。如果在前几年就抱定不转行的思路并且为之努力的话，那么在十年的这个节点上，有些人必然成长为一名对行业有着深入认识、对技术有着深入认识、能从零开始对一个产品进行分析的程序员，这样的人在公司基本担任的都是CTO、技术专家、首席架构师等最关键的职位，这对于自己绝对是一件荣耀的事，当然老板在经济上也绝不会亏待你&lt;/p&gt;
+&lt;p&gt;第一部分总结一下，我认为，随着你工作年限的增长、对生活对生命认识的深入，应当不断思考三个问题：&lt;/p&gt;
+&lt;p&gt;1、我到底适不适合当一名程序员？&lt;/p&gt;
+&lt;p&gt;2、我到底应不应该一辈子以程序员为职业？&lt;/p&gt;
+&lt;p&gt;3、我对编程到底持有的是一种什么样的态度，是够用就好呢还是不断研究？&lt;/p&gt;
+&lt;p&gt;最终，明确自己的职业规划，对自己的规划负责并为之努力。&lt;/p&gt;
+&lt;p&gt;关于项目经验&lt;/p&gt;
+&lt;p&gt;LZ在网上经常看到一些别的朋友有提出项目经验的问题，依照LZ面试的感觉来说，面试主要看几点： 项目经验+基本技术+个人潜力 （也就是值不值得培养）。&lt;/p&gt;
+&lt;p&gt;关于项目经验，我认为并发编程网的创始人方腾飞老师讲的一段话非常好：&lt;/p&gt;
+&lt;p&gt;介绍产品时面试官会考察应聘者的沟通能力和思考能力，我们大部分情况都是做产品的一个功能或一个模块，但是即使是这样，自己有没有把整个系统架构或产品搞清楚，并能介绍清楚，为什么做这个系统？这个系统的价值是什么？这个系统有哪些功能？优缺点有哪些？如果让你重新设计这个系统你会如何设计？&lt;/p&gt;
+&lt;p&gt;我觉得这就已经足以概括了。也许你仅仅工作一年，也许你做的是项目中微不足道的模块，当然这些一定是你的劣势且无法改变，但是如何弥补这个劣势，从方老师的话中我总结几点：&lt;/p&gt;
+&lt;p&gt;1、明确你的项目到底是做什么的，有哪些功能&lt;/p&gt;
+&lt;p&gt;2、明确你的项目的整体架构，在面试的时候能够清楚地画给面试官看并且清楚地指出从哪里调用到哪里、使用什么方式调用&lt;/p&gt;
+&lt;p&gt;3、明确你的模块在整个项目中所处的位置及作用&lt;/p&gt;
+&lt;p&gt;4、明确你的模块用到了哪些技术，更好一些的可以再了解一下整个项目用到了哪些技术&lt;/p&gt;
+&lt;p&gt;在你无法改变自己的工作年限、自己的不那么有说服力的项目经验的情况下（这一定是扣分项），可以通过这种方式来一定程度上地弥补并且增进面试官对你的好感度。&lt;/p&gt;
+&lt;p&gt;补充一点，在面试中聊你的项目的时候，有一个问题90%是绕不过的： 谈一下你在项目中解决过的比较复杂的问题 。这需要在工作中不断去发现和探索，不需要多，在你自己目前的项目中只要你找到一两个能说的问题就行。一个小技巧是，即使问题不是你解决的而是别人解决的，但是你把这个问题弄懂、搞透了，在面试的时候你一样可以把这个问题当作是你自己解决的来说—-毕竟，谁来管这个问题当时到底是不是你解决的呢？&lt;/p&gt;
+&lt;p&gt;关于专业技能&lt;/p&gt;
+&lt;p&gt;写完项目接着写写一名3年工作经验的Java程序员应该具备的技能，这可能是Java程序员们比较关心的内容。我这里要说明一下，以下列举的内容不是都要会的东西—-但是如果你掌握得越多，最终能得到的评价、拿到的薪水势必也越高。&lt;/p&gt;
+&lt;p&gt;1、基本语法&lt;/p&gt;
+&lt;p&gt;这包括static、final、transient等关键字的作用，foreach循环的原理等等。今天面试我问你static关键字有哪些作用，如果你答出static修饰变量、修饰方法我会认为你合格，答出静态块，我会认为你不错，答出静态内部类我会认为你很好，答出静态导包我会对你很满意，因为能看出你非常热衷研究技术。&lt;/p&gt;
+&lt;p&gt;最深入的一次，LZ记得面试官直接问到了我volatile关键字的底层实现原理（顺便插一句，面试和被面试本身就是相对的，面试官能问这个问题同时也让面试者感觉到面试官也是一个喜爱研究技术的人，增加了面试者对公司的好感，LZ最终选择的就是问了这个问题的公司），不要觉得这太吹毛求疵了—-越简单的问题越能看出一个人的水平，别人对你技术的考量绝大多数都是以 深度 优先、广度次之 为标准的，切记。&lt;/p&gt;
+&lt;p&gt;2、集合&lt;/p&gt;
+&lt;p&gt;非常重要，也是必问的内容。基本上就是List、Map、Set，问的是各种实现类的底层实现原理，实现类的优缺点。&lt;/p&gt;
+&lt;p&gt;集合要掌握的是ArrayList、LinkedList、Hashtable、HashMap、ConcurrentHashMap、HashSet的实现原理，能流利作答，当然能掌握CopyOnWrite容器和Queue是再好不过的了。另外多说一句，ConcurrentHashMap的问题在面试中问得特别多，大概是因为这个类可以衍生出非常多的问题，关于ConcurrentHashMap，我给网友朋友们提供三点回答或者是研究方向：&lt;/p&gt;
+&lt;p&gt;（1）ConcurrentHashMap的锁分段技术&lt;/p&gt;
+&lt;p&gt;（2）ConcurrentHashMap的读是否要加锁，为什么&lt;/p&gt;
+&lt;p&gt;（3）ConcurrentHashMap的迭代器是强一致性的迭代器还是弱一致性的迭代器&lt;/p&gt;
+&lt;p&gt;3、设计模式&lt;/p&gt;
+&lt;p&gt;本来以为蛮重要的一块内容，结果只在阿里巴巴B2B事业部面试的时候被问了一次，当时问的是装饰器模式。&lt;/p&gt;
+&lt;p&gt;当然咱们不能这么功利，为了面试而学习，设计模式在工作中还是非常重要、非常有用的，23种设计模式中重点研究常用的十来种就可以了，面试中关于设计模式的问答主要是三个方向：&lt;/p&gt;
+&lt;p&gt;（1）你的项目中用到了哪些设计模式，如何使用&lt;/p&gt;
+&lt;p&gt;（2）知道常用设计模式的优缺点&lt;/p&gt;
+&lt;p&gt;（3）能画出常用设计模式的UML图&lt;/p&gt;
+&lt;p&gt;4、多线程&lt;/p&gt;
+&lt;p&gt;这也是必问的一块了。因为三年工作经验，所以基本上不会再问你怎么实现多线程了，会问得深入一些比如说Thread和Runnable的区别和联系、多次start一个线程会怎么样、线程有哪些状态。当然这只是最基本的，出乎意料地，几次面试几乎都被同时问到了一个问题，问法不尽相同，总结起来是这么一个意思：&lt;/p&gt;
+&lt;p&gt;假如有Thread1、Thread2、Thread3、Thread4四条线程分别统计C、D、E、F四个盘的大小，所有线程都统计完毕交给Thread5线程去做汇总，应当如何实现？&lt;/p&gt;
+&lt;p&gt;聪明的网友们对这个问题是否有答案呢？不难，java.util.concurrent下就有现成的类可以使用。&lt;/p&gt;
+&lt;p&gt;另外，线程池也是比较常问的一块，常用的线程池有几种？这几种线程池之间有什么区别和联系？线程池的实现原理是怎么样的？实际一些的，会给你一些具体的场景，让你回答这种场景该使用什么样的线程池比较合适。&lt;/p&gt;
+&lt;p&gt;最后，虽然这次面试问得不多，但是多线程同步、锁这块也是重点。synchronized和ReentrantLock的区别、synchronized锁普通方法和锁静态方法、死锁的原理及排查方法等等，关于多线程，我在之前有些过文章总结过多线程的40个问题，可以参看 40个Java多线程问题总结 。&lt;/p&gt;
+&lt;p&gt;5、IO&lt;/p&gt;
+&lt;p&gt;再次补充IO的内容，之前忘了写了。&lt;/p&gt;
+&lt;p&gt;IO分为File IO和Socket IO，File IO基本上是不会问的，问也问不出什么来，平时会用就好了，另外记得File IO都是阻塞IO。&lt;/p&gt;
+&lt;p&gt;Socket IO是比较重要的一块，要搞懂的是阻塞/非阻塞的区别、同步/异步的区别，借此理解阻塞IO、非阻塞IO、多路复用IO、异步IO这四种IO模型，Socket IO如何和这四种模型相关联。这是基本一些的，深入一些的话，就会问NIO的原理、NIO属于哪种IO模型、NIO的三大组成等等，这有些难，当时我也是研究了很久才搞懂NIO。提一句， NIO并不是严格意义上的非阻塞IO而应该属于多路复用IO ，面试回答的时候要注意这个细节，讲到NIO会阻塞在Selector的select方法上会增加面试官对你的好感。&lt;/p&gt;
+&lt;p&gt;如果用过Netty，可能会问一些Netty的东西，毕竟这个框架基本属于当前最好的NIO框架了（Mina其实也不错，不过总体来说还是比不上Netty的），大多数互联网公司也都在用Netty。&lt;/p&gt;
+&lt;p&gt;6、JDK源码&lt;/p&gt;
+&lt;p&gt;要想拿高工资，JDK源码不可不读。上面的内容可能还和具体场景联系起来，JDK源码就是实打实地看你平时是不是爱钻研了。LZ面试过程中被问了不少JDK源码的问题，其中最刁钻的一个问了LZ，String的hashCode()方法是怎么实现的，幸好LZ平时String源代码看得多，答了个大概。JDK源码其实没什么好总结的，纯粹看个人，总结一下比较重要的源码：&lt;/p&gt;
+&lt;p&gt;（1）List、Map、Set实现类的源代码&lt;/p&gt;
+&lt;p&gt;（2）ReentrantLock、AQS的源代码&lt;/p&gt;
+&lt;p&gt;（3）AtomicInteger的实现原理，主要能说清楚CAS机制并且AtomicInteger是如何利用CAS机制实现的&lt;/p&gt;
+&lt;p&gt;（4）线程池的实现原理&lt;/p&gt;
+&lt;p&gt;（5）Object类中的方法以及每个方法的作用&lt;/p&gt;
+&lt;p&gt;这些其实要求蛮高的，LZ去年一整年基本把JDK中重要类的源代码研究了个遍，真的花费时间、花费精力，当然回头看，是值得的—-不仅仅是为了应付面试。&lt;/p&gt;
+&lt;p&gt;7、框架&lt;/p&gt;
+&lt;p&gt;老生常谈，面试必问的东西。一般来说会问你一下你们项目中使用的框架，然后给你一些场景问你用框架怎么做，比如我想要在Spring初始化bean的时候做一些事情该怎么做、想要在bean销毁的时候做一些事情该怎么做、MyBatis中$和#的区别等等，这些都比较实际了，平时积累得好、有多学习框架的使用细节自然都不成问题。&lt;/p&gt;
+&lt;p&gt;如果上面你的问题答得好，面试官往往会深入地问一些框架的实现原理。问得最多的就是Spring AOP的实现原理，当然这个很简单啦，两句话就搞定的的事儿，即使你不会准备一下就好了。LZ遇到的最变态的是让LZ画一下Spring的Bean工厂实现的UML图，当然面对这样一个有深度的问题，LZ是绝对答不出来的/(ㄒoㄒ)/~~&lt;/p&gt;
+&lt;p&gt;8、数据库&lt;/p&gt;
+&lt;p&gt;数据库十有八九也都会问到。一些基本的像union和union all的区别、left join、几种索引及其区别就不谈了，比较重要的就是数据库性能的优化，如果对于数据库的性能优化一窍不通，那么有时间，还是建议你在面试前花一两天专门把SQL基础和SQL优化的内容准备一下。&lt;/p&gt;
+&lt;p&gt;不过数据库倒是不用担心，一家公司往往有很多部门，如果你对数据库不熟悉而基本技术又非常好，九成都是会要你的，估计会先把你放到对数据库使用不是要求非常高的部门锻炼一下。&lt;/p&gt;
+&lt;p&gt;9、数据结构和算法分析&lt;/p&gt;
+&lt;p&gt;数据结构和算法分析，对于一名程序员来说，会比不会好而且在工作中绝对能派上用场。数组、链表是基础，栈和队列深入一些但也不难，树挺重要的，比较重要的树AVL树、红黑树，可以不了解它们的具体实现，但是要知道什么是二叉查找树、什么是平衡树，AVL树和红黑树的区别。记得某次面试，某个面试官和我聊到了数据库的索引，他问我：&lt;/p&gt;
+&lt;p&gt;你知道索引使用的是哪种数据结构实现吗？&lt;/p&gt;
+&lt;p&gt;LZ答到用的Hash表吧，答错。他又问，你知道为什么要使用树吗？LZ答到因为Hash表可能会出现比较多的冲突，在千万甚至是上亿级别的数据面前，会大大增加查找的时间复杂度。而树比较稳定，基本保证最多二三十次就能找到想要的数据，对方说不完全对，最后我们还是交流了一下这个问题，我也明白了为什么要使用树，这里不说，网友朋友们觉得索引为什么要使用树来实现呢？&lt;/p&gt;
+&lt;p&gt;至于算法分析，不会、不想研究就算了，记得某次面试对方问我，Collections.sort方法使用的是哪种排序方法，额，吐血三升。当然为了显示LZ的博学，对算法分析也有一定的研究(⊙﹏⊙)b，LZ还是硬着头皮说了一句可能是冒泡排序吧。当然答案肯定不是，有兴趣的网友朋友们可以去看一下Collections.sort方法的源代码，用的是一种叫做TimSort的排序法，也就是增强型的归并排序法。&lt;/p&gt;
+&lt;p&gt;10、Java虚拟机&lt;/p&gt;
+&lt;p&gt;出乎LZ的意料，Java虚拟机应该是很重要的一块内容，结果在这几家公司中被问到的概率几乎为0。要知道，LZ去年可是花了大量的时间去研究Java虚拟机的，光周志明老师的《 深入理解Java虚拟机：JVM高级特性与最佳实践 》，LZ就读了不下五遍。&lt;/p&gt;
+&lt;p&gt;言归正传，虽然Java虚拟机没问到，但我觉得还是有必要研究的，LZ就简单地列一个提纲吧，谈谈Java虚拟机中比较重要的内容：&lt;/p&gt;
+&lt;p&gt;（1）Java虚拟机的内存布局&lt;/p&gt;
+&lt;p&gt;（2）GC算法及几种垃圾收集器&lt;/p&gt;
+&lt;p&gt;（3）类加载机制，也就是双亲委派模型&lt;/p&gt;
+&lt;p&gt;（4）Java内存模型&lt;/p&gt;
+&lt;p&gt;（5）happens-before规则&lt;/p&gt;
+&lt;p&gt;（6）volatile关键字使用规则&lt;/p&gt;
+&lt;p&gt;也许面试无用，但在走向大牛的路上，不可不会。&lt;/p&gt;
+&lt;p&gt;11、Web方面的一些问题&lt;/p&gt;
+&lt;p&gt;Java主要面向Web端，因此Web的一些问题也是必问的。LZ碰到过问得最多的两个问题是：&lt;/p&gt;
+&lt;p&gt;谈谈分布式Session的几种实现方式&lt;/p&gt;
+&lt;p&gt;常用的四种能答出来自然是让面试官非常满意的，另外一个常问的问题是：&lt;/p&gt;
+&lt;p&gt;讲一下Session和Cookie的区别和联系以及Session的实现原理&lt;/p&gt;
+&lt;p&gt;这两个问题之外，web.xml里面的内容是重点，Filter、Servlet、Listener，不说对它们的实现原理一清二楚吧，至少能对它们的使用知根知底。另外，一些细节的方面比如get/post的区别、forward/重定向的区别、HTTPS的实现原理也都可能会被考察到。&lt;/p&gt;
+&lt;p&gt;噢，想起来了，一致性Hash算法貌似也被问到了几次，这个LZ以前专门深入研究过并且写了两篇博文，因此问到这个问题LZ自然是答得毫不费力。文章是 MemCache超详细解读 和对 一致性Hash算法，Java代码实现的深入研究 ，特别说明，LZ真的不是在为自已以前写的文章打广告啊啊啊啊啊啊。&lt;/p&gt;
+&lt;p&gt;最后，如果有兴趣有时间，建议学习、研究一下SOA和RPC，面向服务体系，大型分布式架构必备，救命良方、包治百病、屡试不爽。&lt;/p&gt;
+&lt;p&gt;关于HR面试&lt;/p&gt;
+&lt;p&gt;如果你过五关斩六将，成功地通过了所有的技术面，那么恭喜你，你离升职加薪、出任CEO、迎娶白富美、走向人生巅峰又进了一步。但是还没有到谈薪资待遇的时候，最后还有一个考验：HR面试。基本所有的大公司都有这一轮的面试，不要小看HR面试，很多公司的HR对于面试者都有一票否决权的—-即使前面的面试对你的评价再高。&lt;/p&gt;
+&lt;p&gt;所以，这轮的面试也必须重视起来，HR面试主要问的是几点：&lt;/p&gt;
+&lt;p&gt;1、简历中写的过去工作经历的离职原因&lt;/p&gt;
+&lt;p&gt;2、当前公司薪资待遇&lt;/p&gt;
+&lt;p&gt;3、期望能到怎样的一家公司&lt;/p&gt;
+&lt;p&gt;4、个人未来的发展方向&lt;/p&gt;
+&lt;p&gt;我专门提一下第2点。可能有人比较排斥也不想说这个，我个人倒是持开放状态，问了就说了，当然一些的夸大还是必要的，当前公司薪资待遇多报个一千块钱完全没问题（毕竟是一家互联网公司总多多少少有些补贴啊什么的嘛）。因为这和你在新公司能拿到的薪水关系不大，新公司能拿到的薪水的决定因素是整个公司的薪资情况以及根据你的面试情况在公司的定位，都是有固定的薪资范围的。HR问这个主要也就是心里有个数并且看你是否诚信—-有些公司入职时会要求你提供最近一家单位的银行流水号。&lt;/p&gt;
+&lt;p&gt;HR面试就说到这里了，总结起来其实就是四个字： 滴水不漏 。整个面试过程态度积极向上，不要有任何悲观消极的态度（尤其在谈到以前公司情况的时候，即使有再多的不满），就不会有问题。&lt;/p&gt;
+&lt;p&gt;关于面试心态&lt;/p&gt;
+&lt;p&gt;这个嘛，LZ其实在公司也面试过几个人，一半以上的面试者回答问题的时候都属于那种双腿发抖、声音颤抖的类型。在LZ看来这大可不必并且这还是扣分项，回答问题的时候最最基本的两个要求：&lt;/p&gt;
+&lt;p&gt;1、不紧不慢，平心静气&lt;/p&gt;
+&lt;p&gt;2、条理清晰&lt;/p&gt;
+&lt;p&gt;表达能力绝对是面试的时候重要的考察项目。咱们做的是程序员这一行，讲究的是团队协作，不是写作、画画，一支笔、一个人就行了，一个表达能力不行的程序员，要来又有什么用呢？&lt;/p&gt;
+&lt;p&gt;除此之外，就是保持良好的心态。古语说得好，只要功夫深，铁杵磨成针，面试的成功与否，在于平时的积累，临时抱抱佛脚，看两道面试题是没有用的，只要平时足够努力，成功是水到渠成的事情，平时不怎么研究技术的，那也就是个听天由命的事情，只要充分地展示平时自己的所学就可以了。&lt;/p&gt;
+&lt;p&gt;因此在我看来，不要把面试当作面试，当做一次技术交流，把 面试的心态从我要找到一份工作转变为我要通过面试去发现不足、提升自己 ，这样就会平和多了，即使失败也不会有太多失望的感觉。&lt;/p&gt;
+&lt;p&gt;另外，如果平时自己热衷于研究技术的朋友，真的要有自信，不要觉得别人面试你别人就比你厉害。面试官未必比你优秀，他问的问题往往都是他平时研究得比较多的问题，你一样有很多自己的研究面试官未必知道。&lt;/p&gt;
+&lt;p&gt;关于Java&lt;/p&gt;
+&lt;p&gt;网上常看到一种说法：Java比较简单。某种程度上这会打击Java程序员的信心—-原来咱们平时用的是这种小儿科的玩意儿啊，在我看来这种想法大可不必，这一部分我来讲讲对于这个话题的看法。&lt;/p&gt;
+&lt;p&gt;这种说法有些片面，得分开两部分来看，我用四个自总结一下就是： 易学难精 。&lt;/p&gt;
+&lt;p&gt;1、易学部分&lt;/p&gt;
+&lt;p&gt;Java易学我认为有两部分的原因：&lt;/p&gt;
+&lt;p&gt;（1）很多培训公司包括大四的学生找工作都会学习Java，绝大多数是因为易学。Java从C/C++发展而来，感谢前人的智慧，它消除了C/C++中最复杂和让人困惑的语法、它消除了平台的差异性、它不需要用户手动释放内存空间、它避免了Java程序员和本地语言的交互，让程序员只需要专注于语法层面和应用层面。&lt;/p&gt;
+&lt;p&gt;（2）Java作为一门面向对象的语言，在企业级开发中体现出了它无与伦比的特性，整个开发流程比较固定化、模块化，需求分析起来也相对容易。我举个自己以前的例子吧，我在大一学习C语言的时候，用C语言写了一个图书管理系统写了2000行+的代码，大四学了C++之后，用面向对象的语言C++取代面向过程的语言C语言重新写了一个功能相似的图书管理系统，只写了1100行的样子，这就是面向对象的优势。&lt;/p&gt;
+&lt;p&gt;2、难精部分&lt;/p&gt;
+&lt;p&gt;接着咱们聊聊难精的部分。&lt;/p&gt;
+&lt;p&gt;Java语言的设计者帮助Java程序员做了这么多事情，这有利也有弊。有利的部分前面已经说过了，让Java易学，不过有弊的部分同样明显。假如在应用运行过程中遇到了语法层面和应用层面之外的错误，应当如何处理？比如线上环境出现内存溢出怎么办？GC时间过长怎么办？IO长时间没反应怎么办？方法抛出莫名其妙的异常怎么办？&lt;/p&gt;
+&lt;p&gt;凡此种种，绝不是一名只会写几个if…else…的Java程序员就可以解决的，这需要大量的经历、大量的实践、大量对Java底层实现细节的研究，而这往往是最难、最考验Java程序员的部分，一些人根本就不想往深去研究，另外一些人研究了一点点就研究不下去了。&lt;/p&gt;
+&lt;p&gt;Java为什么难精？就是这个原因。除非你水平特别高，否则五年工作经验以下的Java程序员在简历上写”精通Java”绝对是一件非常愚蠢的事情。&lt;/p&gt;
+&lt;p&gt;结语&lt;/p&gt;
+&lt;p&gt;文章写到这里，感觉有点像鸡汤文了，那就以最后的鸡汤作为结尾吧。&lt;/p&gt;
+&lt;p&gt;在以前博客园的一篇文章中，讲到了奔三程序员的困惑，大致说的是三十岁之后程序员要转行之类的云云，LZ在博文中留下了如下的评论：&lt;/p&gt;
+&lt;p&gt;就以这段话自勉、共勉吧。越努力、越幸运， 如果你不是官二代、富二代、红二代， 那么请记住： 勤奋才是改变你命运的唯一捷径 。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文地址 &lt;a href=&quot;http://www.cnblogs.com/xrq730/p/5260294.html&quot;&gt;http://www.cnblogs.com/xrq730/p/5260294.html&lt;/a&gt; ，转载请注明出处，谢谢！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="others" scheme="http://gongchangmumu.com/categories/others/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Centos7下配置Firewalld(示例tomcat)</title>
+    <link href="http://gongchangmumu.com/2016/01/06/Centos7%E4%B8%8B%E9%85%8D%E7%BD%AEFirewalld-%E7%A4%BA%E4%BE%8Btomcat/"/>
+    <id>http://gongchangmumu.com/2016/01/06/Centos7下配置Firewalld-示例tomcat/</id>
+    <published>2016-01-06T09:18:59.000Z</published>
+    <updated>2016-04-11T15:45:07.535Z</updated>
+    
+    <content type="html">&lt;p&gt;由于centos 7版本以后默认使用firewalld后，网上关于iptables的设置方法已经不管用了。&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;官方文档地址：&lt;a href=&quot;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#sec-Introduction_to_firewalld&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#sec-Introduction_to_firewalld&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;tomcat示例：&quot;&gt;&lt;a href=&quot;#tomcat示例：&quot; class=&quot;headerlink&quot; title=&quot;tomcat示例：&quot;&gt;&lt;/a&gt;tomcat示例：&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;配置防火墙放行8080端口,在/etc/firewalld/services/目录下新建一个名为tomcat.xml的文件，内容如下：&lt;br&gt;&lt;/p&gt;
+ &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?&lt;/span&gt;xml version=&lt;span class=&quot;string&quot;&gt;&quot;1.0&quot;&lt;/span&gt; encoding=&lt;span class=&quot;string&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;service&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;short&lt;/span&gt;&amp;gt;&lt;/span&gt;Tomcat Webserver&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;short&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;...&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;protocol&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;tcp&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;port&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;8080&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;service&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后把此服务加入防火墙规则中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;firewall-cmd –reload&lt;br&gt;firewall-cmd –add-service=tomcat&lt;br&gt;firewall-cmd –permanent –add-service=tomcat&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;or 直接禁用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;systemctl stop firewalld&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; 参考地址：&lt;br&gt; &lt;a href=&quot;http://www.centoscn.com/CentOS/help/2015/0208/4667.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CentOS 7 firewalld使用简介&lt;/a&gt; 、&lt;br&gt; &lt;a href=&quot;http://www.linuxidc.com/Linux/2014-10/107983.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CentOS7+Tomcat 生产系统部署&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于centos 7版本以后默认使用firewalld后，网上关于iptables的设置方法已经不管用了。&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;官方文档地址：&lt;a href=&quot;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#sec-Introduction_to_firewalld&quot;&gt;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#sec-Introduction_to_firewalld&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://gongchangmumu.com/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://gongchangmumu.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一篇博客</title>
+    <link href="http://gongchangmumu.com/2015/12/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://gongchangmumu.com/2015/12/05/第一篇博客/</id>
+    <published>2015-12-05T08:25:00.000Z</published>
+    <updated>2016-04-11T15:46:10.384Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;用hexo搭建的第一篇博客&quot;&gt;&lt;a href=&quot;#用hexo搭建的第一篇博客&quot; class=&quot;headerlink&quot; title=&quot;用hexo搭建的第一篇博客&quot;&gt;&lt;/a&gt;用hexo搭建的第一篇博客&lt;/h1&gt;&lt;h2 id=&quot;博客是怎么产生的：&quot;&gt;&lt;a href=&quot;#博客是怎么产生的：&quot; class=&quot;headerlink&quot; title=&quot;博客是怎么产生的：&quot;&gt;&lt;/a&gt;博客是怎么产生的：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Hexo+Github：选择hexo是因为它比较简单，选择github因为它免费，哈哈，免费的东西总是能让人趋之若鹜。&lt;br&gt;Markdown工具：&lt;strong&gt;MarkdownPad 2&lt;/strong&gt;&lt;br&gt;主要参考啦：&lt;a href=&quot;http://dreajay.github.io/2014/11/24/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo+github搭建博客系统(入门)&lt;/a&gt;、&lt;a href=&quot;http://blog.csdn.net/mockingbirds/article/details/47706779&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;使用hexo搭建自己的博客系统(入门)&lt;/a&gt; 、&lt;a href=&quot;http://wdbaoge.com/2015/12/09/%E9%9A%8F%E7%AC%94-2015-12-09-hexo-%E5%8D%9A%E5%AE%A2%E8%BD%AC%E8%BD%BD/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo 博客神速转载(进阶)&lt;/a&gt;、&lt;a href=&quot;https://xuanwo.org/2015/03/26/hexo-intor/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;史上最详细的Hexo博客搭建图文教程(进阶)&lt;/a&gt;、&lt;a href=&quot;https://xuanwo.org/2014/08/14/hexo-usual-problem/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo常见问题解决方案(进阶)&lt;/a&gt;、&lt;a href=&quot;https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自动化部署&lt;/a&gt;、&lt;a href=&quot;https://hexo.io/zh-cn/docs/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo.io&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;以前不写博客的做什么：&quot;&gt;&lt;a href=&quot;#以前不写博客的做什么：&quot; class=&quot;headerlink&quot; title=&quot;以前不写博客的做什么：&quot;&gt;&lt;/a&gt;以前不写博客的做什么：&lt;/h2&gt;&lt;p&gt;敲代码、敲代码、敲代码….. 做笔记的话用印象笔记、Onenote&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h2&gt;&lt;p&gt;博客完善：&lt;del&gt;fork me on github&lt;/del&gt;、404页面、&lt;del&gt;列表页中文标题未显示&lt;/del&gt;、&lt;del&gt;图床(七牛)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;另附第一篇博客截图(方便吧？)：&lt;br&gt;&lt;img src=&quot;http://7xsnyr.com1.z0.glb.clouddn.com/markdownpad2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;hexo更新记录&quot;&gt;&lt;a href=&quot;#hexo更新记录&quot; class=&quot;headerlink&quot; title=&quot;hexo更新记录&quot;&gt;&lt;/a&gt;hexo更新记录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;2016/4/11 23:29:18 代码高亮(3.1 新版本有问题):&lt;a href=&quot;https://github.com/iissnan/hexo-theme-next/issues/186#issuecomment-106139191&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;修改 auto_detect:true 打开高亮自动检测(如下)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;用hexo搭建的第一篇博客&quot;&gt;&lt;a href=&quot;#用hexo搭建的第一篇博客&quot; class=&quot;headerlink&quot; title=&quot;用hexo搭建的第一篇博客&quot;&gt;&lt;/a&gt;用hexo搭建的第一篇博客&lt;/h1&gt;&lt;h2 id=&quot;博客是怎么产生的：&quot;&gt;&lt;a href=&quot;#博客是怎么产生的：&quot; class=&quot;headerlink&quot; title=&quot;博客是怎么产生的：&quot;&gt;&lt;/a&gt;博客是怎么产生的：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Hexo+Github：选择hexo是因为它比较简单，选择github因为它免费，哈哈，免费的东西总是能让人趋之若鹜。&lt;br&gt;Markdown工具：&lt;strong&gt;MarkdownPad 2&lt;/strong&gt;&lt;br&gt;主要参考啦：&lt;a href=&quot;http://dreajay.github.io/2014/11/24/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/&quot;&gt;hexo+github搭建博客系统(入门)&lt;/a&gt;、&lt;a href=&quot;http://blog.csdn.net/mockingbirds/article/details/47706779&quot;&gt;使用hexo搭建自己的博客系统(入门)&lt;/a&gt; 、&lt;a href=&quot;http://wdbaoge.com/2015/12/09/%E9%9A%8F%E7%AC%94-2015-12-09-hexo-%E5%8D%9A%E5%AE%A2%E8%BD%AC%E8%BD%BD/&quot;&gt;hexo 博客神速转载(进阶)&lt;/a&gt;、&lt;a href=&quot;https://xuanwo.org/2015/03/26/hexo-intor/&quot;&gt;史上最详细的Hexo博客搭建图文教程(进阶)&lt;/a&gt;、&lt;a href=&quot;https://xuanwo.org/2014/08/14/hexo-usual-problem/&quot;&gt;Hexo常见问题解决方案(进阶)&lt;/a&gt;、&lt;a href=&quot;https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/&quot;&gt;自动化部署&lt;/a&gt;、&lt;a href=&quot;https://hexo.io/zh-cn/docs/index.html&quot;&gt;Hexo.io&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;以前不写博客的做什么：&quot;&gt;&lt;a href=&quot;#以前不写博客的做什么：&quot; class=&quot;headerlink&quot; title=&quot;以前不写博客的做什么：&quot;&gt;&lt;/a&gt;以前不写博客的做什么：&lt;/h2&gt;&lt;p&gt;敲代码、敲代码、敲代码….. 做笔记的话用印象笔记、Onenote&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="others" scheme="http://gongchangmumu.com/categories/others/"/>
+    
+    
+  </entry>
+  
+</feed>
